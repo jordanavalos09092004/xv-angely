@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mis XV Años · Angely Lugo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --bg:#2a0b5e; --bg2:#7a1ea1; --ink:#fff6fb; --blush:#ff9fd0; --blush2:#ff6fb5;
+  --gold:#ffc93c; --gold2:#ff9f1c; --acc:#2de2e6; --paper:#fff6fb; --paper-ink:#4a0f7a;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#2a0b5e; --bg2:#7a1ea1; --ink:#fff6fb; --paper:#fff6fb; --paper-ink:#4a0f7a; }
+}
+:root[data-theme="dark"]{ --bg:#2a0b5e; --bg2:#7a1ea1; --ink:#fff6fb; --paper:#fff6fb; --paper-ink:#4a0f7a; }
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:radial-gradient(120% 90% at 50% 0%,var(--bg2),var(--bg) 70%) var(--bg);
+  color:var(--ink); font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  overflow:hidden;
+}
+.script{font-family:"Great Vibes","Snell Roundhand","Brush Script MT",cursive;font-weight:400}
+.gold{color:var(--gold)}
+/* partículas */
+.spark{position:fixed;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0;animation:float 9s linear infinite;pointer-events:none}
+@keyframes float{0%{transform:translateY(20px);opacity:0}20%{opacity:.7}100%{transform:translateY(-120px);opacity:0}}
+/* escena del sobre */
+#stage{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;transition:opacity .9s ease,visibility .9s}
+#stage.hide{opacity:0;visibility:hidden}
+.intro{text-align:center}
+.intro .script{font-size:clamp(46px,14vw,72px);color:var(--blush);line-height:1}
+.intro p{letter-spacing:.35em;text-transform:uppercase;font-size:13px;color:var(--gold);margin-top:8px}
+.env{--w:min(86vw,380px);position:relative;width:var(--w);height:calc(var(--w)*.68);cursor:pointer;perspective:1200px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.45));-webkit-tap-highlight-color:transparent}
+.env .back{position:absolute;inset:0;background:linear-gradient(160deg,var(--blush),var(--blush2));border-radius:6px}
+.letter{position:absolute;left:6%;right:6%;top:6%;height:88%;background:var(--paper);border-radius:4px;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--paper-ink);transition:transform .9s cubic-bezier(.4,0,.2,1) .6s;border:1px solid var(--gold)}
+.letter .script{font-size:calc(var(--w)*.14);line-height:1}
+.letter small{letter-spacing:.3em;font-size:11px;text-transform:uppercase;color:var(--gold2)}
+.pocket{position:absolute;inset:0;z-index:2;pointer-events:none}
+.pocket i{position:absolute;inset:0;border-radius:6px}
+.pocket .l{background:linear-gradient(120deg,#ffd3ea,#ff9fd0);clip-path:polygon(0 0,52% 52%,0 100%)}
+.pocket .r{background:linear-gradient(240deg,#ffd3ea,#ff9fd0);clip-path:polygon(100% 0,48% 52%,100% 100%)}
+.pocket .b{background:linear-gradient(0deg,#ffb4da,#ff8cc6);clip-path:polygon(0 100%,50% 48%,100% 100%)}
+.flap{position:absolute;left:0;right:0;top:0;height:56%;z-index:3;transform-origin:top;transition:transform .8s ease,z-index 0s .4s;background:linear-gradient(180deg,#ffd9ee,#ffa6d4);clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:visible}
+.seal{position:absolute;left:50%;top:56%;width:calc(var(--w)*.2);height:calc(var(--w)*.2);margin:calc(var(--w)*-.1) 0 0 calc(var(--w)*-.1);border-radius:50%;z-index:4;background:radial-gradient(circle at 35% 30%,#ff3d9a,#b0006b);box-shadow:0 4px 10px rgba(0,0,0,.4),inset 0 0 0 3px rgba(255,201,60,.55);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:600;font-size:calc(var(--w)*.075);letter-spacing:.04em;transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.env.open .letter{transform:translateY(-48%)}
+.env.open .seal{opacity:0}
+.hint{letter-spacing:.3em;text-transform:uppercase;font-size:12px;color:var(--blush);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+/* invitación completa */
+#invite{position:fixed;inset:0;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity 1s ease .2s;-webkit-overflow-scrolling:touch}
+#invite.show{opacity:1;visibility:visible}
+.card{max-width:520px;margin:0 auto;padding:48px 24px 64px;text-align:center}
+.frame{border:1px solid var(--gold);outline:1px solid rgba(255,201,60,.35);outline-offset:6px;padding:44px 24px;border-radius:2px;background:rgba(255,246,251,.04)}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);margin:18px 0}
+.orn:before,.orn:after{content:"";height:1px;width:64px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn:after{transform:scaleX(-1)}
+.eyebrow{letter-spacing:.4em;text-transform:uppercase;font-size:13px;color:var(--gold)}
+.xv{font-size:96px;line-height:1;color:var(--blush);font-weight:600}
+.name{font-size:clamp(56px,17vw,84px);line-height:1.05;color:var(--ink)}
+.lead{font-style:italic;font-size:21px;line-height:1.45;color:var(--blush);max-width:360px;margin:0 auto}
+.grid{display:grid;gap:14px;margin-top:8px}
+.item{border:1px solid rgba(255,201,60,.5);padding:18px 14px;border-radius:2px}
+.item h3{letter-spacing:.35em;text-transform:uppercase;font-size:12px;color:var(--acc);font-weight:600;margin-bottom:6px}
+.item p{font-size:23px;color:var(--ink);line-height:1.3}
+.item small{display:block;font-size:16px;color:var(--blush);margin-top:4px;font-style:italic}
+#count{display:none;gap:10px;justify-content:center;margin-top:6px}
+#count div{min-width:64px;padding:10px 6px;border:1px solid rgba(255,201,60,.5)}
+#count b{display:block;font-size:30px;color:var(--gold);font-weight:600}
+#count span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blush)}
+.btn{display:inline-block;margin-top:10px;padding:13px 26px;border:1px solid var(--gold);color:var(--bg);background:var(--gold);text-decoration:none;letter-spacing:.25em;text-transform:uppercase;font-size:13px;font-weight:600;border-radius:2px}
+.btn.ghost{background:transparent;color:var(--gold)}
+.foot{margin-top:26px;font-size:20px;font-style:italic;color:var(--blush)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+#invite.show .rv{opacity:1;transform:none}
+#invite.show .rv:nth-child(2){transition-delay:.4s}#invite.show .rv:nth-child(3){transition-delay:.7s}
+#invite.show .rv:nth-child(4){transition-delay:1s}#invite.show .rv:nth-child(5){transition-delay:1.3s}
+#invite.show .rv:nth-child(6){transition-delay:1.6s}#invite.show .rv:nth-child(7){transition-delay:1.9s}
+.gallery{position:relative;width:100%;max-width:340px;aspect-ratio:4/5;margin:6px auto 26px;border:1px solid var(--gold);outline:1px solid rgba(255,201,60,.35);outline-offset:7px;overflow:hidden;background:var(--bg2);touch-action:pan-y}
+.gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.gallery img.on{opacity:1}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:7px;z-index:2}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,246,251,.5);transition:background .4s,transform .4s}
+.dots i.on{background:var(--gold);transform:scale(1.25)}
+#sound{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:rgba(42,11,94,.85);color:var(--gold);font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center}
+#sound.show{display:flex}
+#sound.off{opacity:.6;text-decoration:line-through}
+#invite.show .rv:nth-child(8){transition-delay:2.2s}
+#rsvp input,#rsvp select,#rsvp textarea{display:block;width:100%;margin:10px 0;padding:12px;background:rgba(255,246,251,.07);border:1px solid rgba(255,201,60,.5);color:var(--ink);font:inherit;font-size:18px;border-radius:2px}
+#rsvp select option{color:#222}
+#rsvp .btn{border:0;cursor:pointer;font-family:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="intro">
+    <div class="script">Angely</div>
+    <p>Te invita a sus XV años</p>
+  </div>
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Abrir invitación">
+    <div class="back"></div>
+    <div class="letter"><small>Mis</small><div class="script">XV Años</div><small>Angely Lugo</small></div>
+    <div class="pocket"><i class="l"></i><i class="r"></i><i class="b"></i></div>
+    <div class="flap"></div>
+    <div class="seal">XV</div>
+  </div>
+  <div class="hint" id="hint">Toca el sobre para abrir</div>
+</div>
+
+<main id="invite">
+  <div class="card">
+    <div class="frame">
+      <div class="rv"><div class="eyebrow">Con alegría te invito a celebrar</div>
+        <div class="orn">✦</div>
+        <div class="script xv">XV</div></div>
+      <div class="rv"><div class="eyebrow">Mis años</div>
+        <div class="script name">Angely Lugo</div>
+        <div class="orn">✦</div></div>
+      <div class="rv"><div class="gallery" id="gallery">
+          <div class="dots" id="dots"></div></div></div>
+      <div class="rv"><p class="lead" id="message"></p></div>
+      <div class="rv" id="guest" style="display:none"><div class="item"><h3>Invitación para</h3><p id="gName"></p><small id="gPases"></small></div></div>
+      <div class="rv grid" style="margin-top:10px">
+        <div class="item" id="iPadres" style="display:none"><h3>Con la bendición de mis padres</h3><p id="fPadres"></p></div>
+        <div class="item" id="iCer" style="display:none"><h3>Ceremonia</h3><p id="fCer"></p></div>
+        <div class="item"><h3>Fecha</h3><p id="fDate"></p></div>
+        <div class="item"><h3>Recepción</h3><p id="fPlace"></p><small id="fTime"></small><small id="fAddr"></small>
+          <a class="btn ghost" id="map" href="#" target="_blank" rel="noopener" style="display:none;margin-top:14px">Ver ubicación</a></div>
+        <div class="item" id="iDress" style="display:none"><h3>Código de vestimenta</h3><p id="fDress"></p></div>
+        <div class="item" id="iGift" style="display:none"><h3>Mesa de regalos</h3><p id="fGift"></p>
+          <a class="btn ghost" id="gLink" href="#" target="_blank" rel="noopener" style="display:none;margin-top:14px">Ver mesa</a></div>
+      </div>
+      <div class="rv"><div id="count"></div></div>
+      <div class="rv"><form class="item" id="rsvp" style="margin-top:20px"><h3>Confirma tu asistencia</h3>
+        <input id="rName" placeholder="Tu nombre" required>
+        <select id="rNum" required></select>
+        <textarea id="rMsg" rows="2" placeholder="Mensaje para Angely (opcional)"></textarea>
+        <button class="btn" type="submit">Enviar respuesta</button>
+        <p class="foot" id="rOk" style="display:none"></p></form>
+        <p class="foot">Tu presencia hará este día inolvidable.</p></div>
+    </div>
+  </div>
+</main>
+
+<audio id="song" src="musica.mp3" loop preload="auto"></audio>
+<button id="sound" aria-label="Activar o silenciar música">♪</button>
+
+<script>
+/* ====== EDITA AQUÍ LOS DATOS DE LA FIESTA ====== */
+var CONFIG = {
+  mensaje:   "Quiero compartir contigo uno de los días más especiales de mi vida.",
+  padres:    "Con la bendición de Dios y el cariño de mi familia",   // aquí puedes poner los nombres de tus papás
+  fechaISO:  "2027-04-30T23:00:00",
+  fechaTexto:"Viernes 30 de abril de 2027",
+  hora:      "11:00 p. m.",
+  ceremonia: "Te compartiremos los detalles muy pronto",   // ejemplo: "Parroquia San José · 8:00 p. m."
+  lugar:     "Mi casa",
+  direccion: "El Salto, Durango",
+  mapaUrl:   "https://www.google.com/maps/search/?api=1&query=QJFM%2B8X9%20El%20Salto%20Durango",
+  vestimenta:"Elegante",   // ejemplo: "Formal" o "Semiformal"
+  regalos:   "Tu presencia es mi mejor regalo",   // ejemplo: "Lluvia de sobres"
+  regalosUrl:"",   // enlace de la mesa de regalos (opcional)
+  whatsapp:  "526751226625",
+  rsvp: { action:"", nombre:"", asistentes:"", mensaje:"" }  // Google Forms (ver guía)
+};
+/* =============================================== */
+(function(){
+  var C=CONFIG,pend="Por confirmar",Q=new URLSearchParams(location.search);
+  function $(i){return document.getElementById(i)}
+  function put(box,txt,id){$(id).textContent=txt||pend;$(box).style.display="block"}
+  $("message").textContent="“"+C.mensaje+"”";
+  put("iPadres",C.padres,"fPadres");put("iCer",C.ceremonia,"fCer");
+  put("iDress",C.vestimenta,"fDress");put("iGift",C.regalos,"fGift");
+  if(C.regalos&&C.regalosUrl){var gl=$("gLink");gl.href=C.regalosUrl;gl.style.display="inline-block"}
+  $("fDate").textContent=C.fechaTexto||pend;$("fTime").textContent=C.hora||pend;
+  $("fPlace").textContent=C.lugar||pend;$("fAddr").textContent=C.direccion;
+  if(C.mapaUrl){var mp=$("map");mp.href=C.mapaUrl;mp.style.display="inline-block"}
+  var inv=Q.get("invitado")||"",ps=parseInt(Q.get("pases"),10)||0;
+  if(inv){$("guest").style.display="block";$("gName").textContent=inv;$("rName").value=inv;
+    $("gPases").textContent=ps?ps+(ps>1?" pases":" pase"):""}
+  var sel=$("rNum"),h='<option value="">¿Cuántos asistirán?</option>';
+  for(var n=1;n<=(ps||10);n++)h+='<option value="'+n+'">'+n+(n>1?" personas":" persona")+'</option>';
+  sel.innerHTML=h+'<option value="0">No podré asistir</option>';
+  $("rsvp").addEventListener("submit",function(e){e.preventDefault();
+    var nm=$("rName").value.trim(),a=sel.value,m=$("rMsg").value.trim(),R=C.rsvp||{};
+    function ok(){var o=$("rOk");o.style.display="block";o.textContent="¡Gracias, "+nm+"! Tu respuesta fue enviada."}
+    if(R.action){var b=new URLSearchParams();b.append(R.nombre,nm);b.append(R.asistentes,a);b.append(R.mensaje,m);
+      fetch(R.action,{method:"POST",mode:"no-cors",body:b}).then(ok,ok)}
+    else if(C.whatsapp){location.href="https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent("Hola, soy "+nm+": "+(a==="0"?"no podré asistir":"asistiremos "+a)+" a los XV años de Angely."+(m?" "+m:""))}
+  });
+  if(C.fechaISO){
+    var t=new Date(C.fechaISO).getTime(),box=$("count");
+    if(!isNaN(t)){box.style.display="flex";
+      (function tick(){var d=Math.max(0,t-Date.now()),s=Math.floor(d/1000);
+        var v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60],l=["Días","Horas","Min","Seg"];
+        box.innerHTML=v.map(function(x,i){return "<div><b>"+x+"</b><span>"+l[i]+"</span></div>"}).join("");
+        setTimeout(tick,1000)})()}
+  }
+  for(var i=0;i<22;i++){var s=document.createElement("span");s.className="spark";
+    s.style.left=Math.random()*100+"vw";s.style.top=(40+Math.random()*60)+"vh";
+    s.style.animationDelay=(Math.random()*9)+"s";s.style.animationDuration=(6+Math.random()*6)+"s";
+    document.body.appendChild(s)}
+  var g=$("gallery"),dots=$("dots"),gi=0;
+  function imgs(){return g.querySelectorAll("img")}
+  function show(n){var L=imgs();if(!L.length)return;gi=(n+L.length)%L.length;
+    for(var k=0;k<L.length;k++)L[k].classList.toggle("on",k===gi);
+    for(var j=0;j<dots.children.length;j++)dots.children[j].classList.toggle("on",j===gi)}
+  var ph=0;
+  function build(){var L=imgs();
+    if(!L.length&&!ph){ph=1;["XV","Angely","Lugo"].forEach(function(t){var im=new Image();
+      im.src="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c2188a"/><stop offset="1" stop-color="#2a0b5e"/></linearGradient></defs><rect width="400" height="500" fill="url(#a)"/><rect x="24" y="24" width="352" height="452" fill="none" stroke="#ffc93c" stroke-width="2"/><text x="200" y="275" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="'+(t==="XV"?130:76)+'" fill="#ff9fd0">'+t+'</text></svg>');
+      im.alt="";g.insertBefore(im,dots)});L=imgs()}
+    if(!L.length){g.parentNode.style.display="none";return}
+    dots.innerHTML="";for(var k=0;k<L.length;k++)dots.appendChild(document.createElement("i"));show(gi)}
+  for(var k=1;k<=15;k++){(function(k){
+    var im=new Image(),ex=["jpg","jpeg","png","webp"],e=0;im.src="foto"+k+".jpg";im.alt="Angely Lugo";
+    im.addEventListener("error",function(){if(++e<ex.length){im.src="foto"+k+"."+ex[e]}else{im.remove();build()}});
+    g.insertBefore(im,dots)})(k)}
+  build();
+  setInterval(function(){show(gi+1)},4500);
+  var x0=null;
+  g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+  g.addEventListener("touchend",function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;
+    if(Math.abs(d)>40)show(gi+(d<0?1:-1));x0=null});
+  var song=$("song"),snd=$("sound");
+  snd.addEventListener("click",function(){
+    if(song.paused){song.play();snd.classList.remove("off")}else{song.pause();snd.classList.add("off")}});
+  var env=$("env"),opened=false;
+  function open(){
+    if(opened)return;opened=true;env.classList.add("open");song.volume=.6;var p=song.play();if(p&&p.catch)p.catch(function(){});snd.classList.add("show");$("hint").style.visibility="hidden";
+    setTimeout(function(){$("stage").classList.add("hide");$("invite").classList.add("show")},2100);
+  }
+  env.addEventListener("click",open);
+  env.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+})();
+</script>
+</body>
+</html>
